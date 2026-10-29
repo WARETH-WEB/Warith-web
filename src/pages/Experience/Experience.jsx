@@ -6,7 +6,6 @@ import { useLang } from "../../context/LangContext";
 const SCATTER_MS = 1000;      // النقط متبعثرة قبل ما تبدأ تتجمع
 const GATHER_MS = 2600;       // مدة التجمّع
 const MAX_START_DELAY = 300;
-const MAX_PARTICLES = 3200;
 const IDLE_MS = 4000;
 const GOLD = "#D8AA4A";
 const GOLD_SOFT = "#F4D27B";
@@ -14,6 +13,10 @@ const FONTS = {
   ar: { family: '"Amiri", serif', weight: 700, name: "Amiri", maxSize: 190, ratio: 0.19 },
   en: { family: '"Cinzel Decorative", serif', weight: 700, name: "Cinzel Decorative", maxSize: 120, ratio: 0.11 },
 };
+const isMobileDevice = typeof window !== "undefined" && (
+  window.innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent)
+);
+const MAX_PARTICLES = isMobileDevice ? 1400 : 3200;
 /* ========================================== */
 
 const easeInOut = (x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2);

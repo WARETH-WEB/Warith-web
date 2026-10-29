@@ -10,9 +10,11 @@ import ThoughtLeftBehind from "./pages/ThoughtLeftBehind/ThoughtLeftBehind";
 import About from "./pages/About/About";
 import FindExperience from "./pages/FindExperience/FindExperience";
 
+
 export default function App() {
   return (
     <Routes>
+
       <Route element={<Layout />}>
         <Route index element={<Experience />} />
         <Route path="world" element={<World />} />

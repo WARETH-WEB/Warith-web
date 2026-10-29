@@ -4,7 +4,6 @@ export default function CustomCursor() {
   const dot = useRef(null);
 
   useEffect(() => {
-    // الأجهزة اللمسية مفيهاش ماوس
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     document.body.classList.add("custom-cursor");
@@ -55,7 +54,6 @@ export default function CustomCursor() {
       style={{
         boxShadow: "0 0 14px 4px rgba(244,210,123,0.55)",
         transform: "translate(-100px, -100px)",
-        transition: "scale 0.15s",
       }}
     />
   );
