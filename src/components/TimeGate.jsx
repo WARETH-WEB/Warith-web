@@ -106,7 +106,7 @@ export default function TimeGate({ onDone }) {
             </g>
           ))}
         </motion.g>
-      </motion.svg>
+      </motion.svg> 
 
       <motion.div
         className="relative h-[52vmin] w-[34vmin] overflow-hidden"

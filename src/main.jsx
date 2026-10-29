@@ -3,11 +3,17 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { LangProvider } from "./context/LangContext";
 import "./index.css";
+import { ErrorBoundary } from "./components/ErrorBoundary";
+
+// تحديد الـ basename 
+const basename = import.meta.env.MODE === "production" ? "/WARETH" : "";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <BrowserRouter basename={basename}>
     <LangProvider>
-      <App />
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
     </LangProvider>
   </BrowserRouter>
 );

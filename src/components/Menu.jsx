@@ -20,10 +20,11 @@ const extras = [
 export default function Menu() {
   const [open, setOpen] = useState(false);
   const [muted, setMuted] = useState(false);
-  const { t, isRTL, toggleLang } = useLang();
+  const { t, toggleLang } = useLang();
 
   const close = () => setOpen(false);
-  const offscreen = isRTL ? "100%" : "-100%";
+  
+  const offscreen = "100%";
 
   const linkClass = ({ isActive }) =>
     `block py-2 font-title text-lg transition-colors hover:text-gold ${
@@ -32,11 +33,10 @@ export default function Menu() {
 
   return (
     <>
-      {/* الأزرار العلوية */}
-     <div
-  className="fixed top-3 z-50 flex items-center gap-2 sm:top-6 sm:gap-3"
-  style={{ right: "0.75rem" }}
->
+      <div
+        className="fixed top-3 z-50 flex items-center gap-2 sm:top-6 sm:gap-3"
+        style={{ right: "0.75rem" }}
+      >
         <button
           onClick={toggleLang}
           aria-label={t.langSwitchLabel}
@@ -59,7 +59,6 @@ export default function Menu() {
       <AnimatePresence>
         {open && (
           <>
-            {/* طبقة معتمة */}
             <motion.div
               className="fixed inset-0 z-40 bg-black/60"
               initial={{ opacity: 0 }}
@@ -68,14 +67,9 @@ export default function Menu() {
               onClick={close}
             />
 
-            {/* القائمة */}
             <motion.aside
               className="fixed top-0 z-50 flex h-full w-[85%] max-w-sm flex-col overflow-y-auto border-gold/30 bg-navy-deep px-8 py-6"
-              style={
-                isRTL
-                  ? { right: 0, borderLeftWidth: 1 }
-                  : { left: 0, borderRightWidth: 1 }
-              }
+              style={{ right: 0, borderLeftWidth: 1 }}
               initial={{ x: offscreen }}
               animate={{ x: 0 }}
               exit={{ x: offscreen }}
